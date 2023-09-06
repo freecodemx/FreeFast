@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background: url('./components/img/tres.jpg');
+    background-size: cover;
+    color: #333333;
+    font-family: "Roboto", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0; 
+}
+
+a {
+    color: #4f86c6;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #071a29;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 1.25rem;
+}
+
+.text-2xl {
+    font-size: 1.3rem;
+    line-height: 2rem;
+}
+
+.text-lg {
+    font-size: 0.9rem;
+    line-height: 1.75rem;
+}
+
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.9);
+
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.sombra-contenedor {
+    width: 90%;
+    max-width: 400px;
+    height: 200px;
+    margin: 0 auto;
+    background-color: lightgray;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.bg-madera {
+    background: linear-gradient(45deg, #6e4621 25%, transparent 25%) -25px 0,
+        linear-gradient(-45deg, #6e4621 25%, transparent 25%) -25px 0,
+        linear-gradient(45deg, transparent 75%, #6e4621 75%),
+        linear-gradient(-45deg, transparent 75%, #6e4621 75%);
+    background-size: 50px 50px;
+    background-color: #6e4621;
+}
+
+/* Estilo para el margen inferior de los elementos <li> */
+.li-spacing {
+    margin-bottom: 0.5rem;
+    /* Puedes ajustar este valor según tus preferencias */
+
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #4f86c6;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #8ab5d5;
+}
+
+/* Media queries for responsive background */
+@media (max-width: 768px) {
+    body {
+        background-attachment: fixed;
+    }
+}
+
+/* styles.css */
+@media (max-width: 640px) {
+    .small-container {
+      padding: 8px;
+    }
+  }
+
+  .rounded-lg {
+    border-radius: 3.5rem;
+}
