@@ -6,14 +6,14 @@ import { useForm } from "react-hook-form";
 
 function ProductsSectionPage() {
     const { id } = useParams();
-    const { getProductsBySectionId,getProducts, updateProduct, createProduct } = useProduct();
+    const { getProductsBySectionId,getAllProducts, updateProduct, createProduct } = useProduct();
    // const { sections } = useSection();
     const products = getProductsBySectionId(id);
     const { setValue, handleSubmit } = useForm();
     const navigate = useNavigate();
     const [selectedProduct, setSelectedProduct] = useState(null);
     useEffect(() => {
-        getProducts();
+        getAllProducts();
     }, []);
 
     useEffect(() => {

@@ -15,7 +15,7 @@ const SectionContext = createContext();
 export const useSection = () => {
     try {
         const context = useContext(SectionContext);
-        console.log(context)
+      //  console.log(context)
         if (!context) 
             throw new Error("useSection debe ser usado dentro de un SectiontProvider");
             return context; 
@@ -53,7 +53,7 @@ export function SectionProvider({ children }) {
             const res = await getAllSectionsRequest();
             setSections(res.data);
         } catch (error) {
-            console.error('Error al obtener los productos:', error);
+            console.error('Error al obtener las secciones:', error);
         }
     };
 

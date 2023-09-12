@@ -7,6 +7,8 @@ import {
     getProductRequest,
     updateProductRequest,
     getAllProductsRequest,
+    sendProductRequest,
+    acceptProductRequest
 } from "../api/products.js";
 
 const ProductContext = createContext();
@@ -14,7 +16,7 @@ const ProductContext = createContext();
 
 export const useProduct = () => {
     const context = useContext(ProductContext);
-    console.log(context);
+    //console.log(context);
     if (!context) {
         throw new Error("useProduct debe ser usado dentro de un ProductProvider");
     }
@@ -24,7 +26,53 @@ export const useProduct = () => {
 
 export function ProductProvider({ children }) {
     const [products, setProducts] = useState([]);
+    const [notifications, setNotifications] = useState([]);
 
+    // Define la función sendProduct para enviar solicitudes de producto
+    const sendProduct = async (data) => {
+        try {
+            const res = await sendProductRequest(data);
+
+            // Después de enviar la solicitud, actualiza el estado del producto a "Solicitado"
+            if (res.data) {
+                const updatedProducts = products.map((product) => {
+                    if (product._id === data.productId) {
+                        product.estatus = 'Solicitado';
+                    }
+                    return product;
+                });
+                setProducts(updatedProducts);
+            }
+
+            return res.data;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    };
+
+    // Define la función acceptProduct para aceptar un producto
+    const acceptProduct = async (data) => {
+        try {
+            const res = await acceptProductRequest(data);
+
+            // Después de aceptar la solicitud, actualiza el estado del producto a "Entregado"
+            if (res.data) {
+                const updatedProducts = products.map((product) => {
+                    if (product._id === data.productId) {
+                        product.estatus = 'Entregado';
+                    }
+                    return product;
+                });
+                setProducts(updatedProducts);
+            }
+
+            return res.data;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    };
     const createProduct = async (product) => {
         try {
             const res = await createProductRequest(product);
@@ -75,11 +123,28 @@ export function ProductProvider({ children }) {
         }
     }
 
-    const updateProduct = async (id, product) => {
+    // Define la función para actualizar un producto
+    const updateProduct = async (id, updatedProductData) => {
         try {
-            await updateProductRequest(id, product);
+            const res = await updateProductRequest(id, updatedProductData);
+
+            // Después de actualizar el producto con éxito, puedes realizar lógica adicional si es necesario
+            // Por ejemplo, si se cambió el campo "estatus", puedes actualizarlo en el estado local
+            if (res.data) {
+                const updatedProducts = products.map((product) => {
+                    if (product._id === id) {
+                        // Asumiendo que "estatus" es un campo en updatedProductData
+                        product.estatus = updatedProductData.estatus;
+                    }
+                    return product;
+                });
+                setProducts(updatedProducts);
+            }
+
+            return res.data;
         } catch (error) {
             console.error(error);
+            throw error;
         }
     };
 
@@ -91,7 +156,15 @@ const getProductsBySectionId = (sectionId) => {
     // Filtra los productos que pertenecen a la sección con el ID proporcionado
     return products.filter((product) => product.section === sectionId);
 };
-
+//Envío de notificaciones
+const sendNotification = (senderId, receiverId, message) => {
+    const newNotification = {
+        senderId,
+        receiverId,
+        message,
+    };
+    setNotifications([...notifications, newNotification]);
+};
     return (
         <ProductContext.Provider
             value={{
@@ -103,7 +176,10 @@ const getProductsBySectionId = (sectionId) => {
                 getProduct,
                 updateProduct,
                 getProductById,
-                getProductsBySectionId
+                getProductsBySectionId,
+                sendNotification,
+                sendProduct,
+                acceptProduct
             }}
         >
             {children}

@@ -6,3 +6,7 @@ export const createProductRequest = async (product) => axios.post("/products", p
 export const updateProductRequest = async (id, product) => axios.put(`/products/${id}`, product);
 export const deleteProductRequest = async (id) => axios.delete(`/products/${id}`);
 export const getProductRequest = async (id) => axios.get(`/products/${id}`);
+export const sendProductRequest = async (product) => axios.post("/solicitar", product);
+export const acceptProductRequest = async (product) => axios.post("/aceptar", product);
+
+

@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
+//import { useEffect } from "react";
 import moment from "moment";
 import { useProduct } from "../context/ProductContext";
 import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
     const { deleteProduct } = useProduct();
+    
 
     return (
         <div className=" hover:bg-blue-900 border border-gray-300 p-4 rounded-lg shadow-md text-white">

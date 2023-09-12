@@ -10,9 +10,11 @@ import ProductDetailPage from './pages/productDetails';
 import SectionsPage from './pages/sectionsPage';
 import ProductsSectionPage from './pages/productsSectionPage';
 
-import { AuthProvider,useAuth } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 import { ProductProvider } from './context/ProductContext';
 import { SectionProvider } from './context/SectionContext';
+import {NotificationProvider} from './context/NotificationContext';
+
 import ProtectedRoute from './ProtectedRoute.jsx';
 
 import Navbar from './components/Navbar';
@@ -20,6 +22,7 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <AuthProvider>
+       <NotificationProvider>
       <SectionProvider>
       <ProductProvider>
         <BrowserRouter>
@@ -45,6 +48,7 @@ function App() {
         </BrowserRouter>
       </ProductProvider>
       </SectionProvider>
+      </NotificationProvider>
     </AuthProvider>
   );
 }

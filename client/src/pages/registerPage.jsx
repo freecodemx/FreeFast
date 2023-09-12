@@ -26,7 +26,7 @@ function RegisterPage() {
 
     return (
         <div className="bg-zinc-900 text-white mx-auto max-w-md w-full md:w-3/4 lg:w-1/2 xl:w-1/3 p-6 md:p-10 rounded-md shadow-md">
-            <h1 className="text-blue-100 text-3xl md:text-4xl font-bold mb-4">📒 Regístrate!</h1>
+            <h1 className="text-center text-blue-100 text-3xl md:text-4xl font-bold mb-4">Regístrate</h1>
             {
                 registerErrors.map((error, i) => (
                     <div className="bg-red-500 p-2 text-white" key={i}>
