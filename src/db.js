@@ -1,11 +1,22 @@
 import mongoose from "mongoose";
+import app from './app.js'
+import pg from 'pg'
 
+
+
+const pool = new pg.Pool({
+    connectionString: process.env.DATABASE_URL,
+    //ssl: true
+});
 
 //Conexión a la Base de Datos
-export const connectDB = async () => {
+export const connectDB =  () => {
     try {
-        await mongoose.connect('mongodb://localhost/dbsubastas');
-        console.log(">>> BD Conectada!")
+        app.get('/ping', async (req, res) => {
+            const result = await pool.query('SELECT NOW()')
+            return res.json(result.rows[0])
+        })
+        console.log(">>>  BD Conectada!")
     } catch (error) {
         console.log(error)
     }

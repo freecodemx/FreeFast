@@ -8,9 +8,13 @@ import productRoutes from './routes/products.routes.js';
 import storeRoutes from './routes/store.routes.js';
 import sectionRoutes from './routes/sections.routes.js';
 
+import {config} from 'dotenv'
+
 //Se inicializa el objeto ejecutandolo y se guarda en una constante app
 //app es básicamente el servidor
 const app = express();
+config();
+
 
 app.use(cors({
     origin: 'http://localhost:5173',
