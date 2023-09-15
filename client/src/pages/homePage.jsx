@@ -16,7 +16,7 @@ function HomePage() {
       </p>
 
       <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-6 text-center">
-        ⭐ ¿Qué es lo que deseas? ⭐
+         ¿Qué es lo que deseas? 
         <br />
       </h2>
 

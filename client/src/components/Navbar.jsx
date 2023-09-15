@@ -62,7 +62,7 @@ function Navbar() {
                                 
                                 </li>
                                 <li className='text-white'>
-                                Bienvenido: {user.tipo} {user.username}  👤
+                                Bienvenido: {user.tipo} {user.username}  
                                 </li>
 
                             </>
@@ -120,7 +120,7 @@ function Navbar() {
                                     </Link>
                                 </li>
                                 <li className="text-white">
-                                    Bienvenido: {user.tipo} {user.username} 👤
+                                    Bienvenido: {user.tipo} {user.username} 
                                 </li>
                             </>
                         )}
@@ -149,7 +149,7 @@ function Navbar() {
             </ul>
             <div className="flex items-center">
                 <Link to="/" className="text-2xl font-bold text-white lg:order-last">
-                    FREE FAST 🍫
+                    FREE FAST 
                 </Link>
 
                 <button
