@@ -1,6 +1,6 @@
 // src/components/Avatar.js
 import { useState } from 'react';
-import myImage from '../components/img/baile.gif';
+import myImage from '../components/img/gordito.png';
 
 const Avatar = () => {
   const [isWaving, setIsWaving] = useState(false);
