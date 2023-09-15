@@ -24,7 +24,7 @@ app.use(helmet.contentSecurityPolicy({
 }))
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: process.env.REACT_URL,
     credentials: true
 }));
 
