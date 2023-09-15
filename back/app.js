@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
-
+import helmet from 'helmet';
 import authRoutes from './routes/auth.routes.js';
 import productRoutes from './routes/products.routes.js';
 import storeRoutes from './routes/store.routes.js';
@@ -14,7 +14,14 @@ import {config} from 'dotenv'
 //app es básicamente el servidor
 const app = express();
 config();
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrcElem: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'"]
 
+    }
+}))
 
 app.use(cors({
     origin: 'http://localhost:5173',
