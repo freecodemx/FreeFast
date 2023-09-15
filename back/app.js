@@ -16,9 +16,9 @@ const app = express();
 config();
 app.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'"],
-        scriptSrcElem: ["'self'", "'unsafe-inline'"],
-        styleSrc: ["'self'", "'unsafe-inline'"]
+        defaultSrc: ['self'],
+        scriptSrcElem: ['self', 'unsafe-inline'],
+        styleSrc: ['self', 'unsafe-inline']
 
     }
 }))
