@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon back/index.js && nodemon client/index.js" 
+    "dev": "nodemon client/index.js" 
   },
   "keywords": [],
   "author": "",
